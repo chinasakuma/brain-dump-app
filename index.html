@@ -8,13 +8,9 @@
   <title>ブレインダンプ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      /* 暖色系パレット（クリーム地 × オレンジ × イエロー） */
       --cream: #fff9e1;
       --cream-deep: #fff3c4;
       --yellow: #ffd700;
@@ -22,18 +18,14 @@
       --orange: #ff8c00;
       --orange-deep: #ff7000;
       --orange-glow: rgb(255 140 0 / 0.35);
-
       --bg: var(--cream);
       --surface: #ffffff;
       --border: rgb(255 183 77 / 0.55);
-      --border-strong: var(--orange);
       --text: #1a1a1a;
       --muted: #8a5a20;
       --accent: linear-gradient(165deg, var(--orange) 0%, var(--orange-deep) 100%);
-      --accent-solid: var(--orange-deep);
       --accent-on: #ffffff;
       --accent-soft: rgb(255 215 0 / 0.28);
-
       --radius: 14px;
       --font: "Zen Maru Gothic", ui-rounded, "Hiragino Maru Gothic ProN", "Yu Gothic UI", system-ui, sans-serif;
     }
@@ -95,61 +87,27 @@
       border-radius: 999px;
       background: var(--surface);
       border: 2px solid var(--yellow);
-      box-shadow:
-        0 10px 28px var(--orange-glow),
-        0 2px 0 rgb(255 255 255 / 1) inset;
-    }
-
-    .app-title-spark {
-      font-size: 1.1rem;
-      line-height: 1;
-      user-select: none;
-      filter: saturate(1.15);
+      box-shadow: 0 10px 28px var(--orange-glow), 0 2px 0 rgb(255 255 255 / 1) inset;
     }
 
     .app-title-word {
-      font-family: inherit;
       font-size: clamp(1.6rem, 4.6vw + 0.35rem, 2.15rem);
       font-weight: 700;
       letter-spacing: 0.04em;
-      position: relative;
-      display: inline-block;
-      padding-bottom: 0.12rem;
       color: var(--text);
       background: linear-gradient(transparent 58%, var(--yellow-soft) 58%, var(--yellow) 88%, transparent 88%);
-      transform-origin: center;
-      animation: hero-title-wave 10s ease-in-out infinite;
-    }
-
-    @keyframes hero-title-wave {
-      0%,
-      100% {
-        transform: rotate(-0.6deg);
-      }
-
-      50% {
-        transform: rotate(0.55deg);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .app-title-word {
-        animation: none;
-      }
     }
 
     header.hero .hero-tagline {
       margin: 0;
       max-width: 24em;
-      color: var(--text);
       font-size: 0.9375rem;
       line-height: 1.65;
       font-weight: 500;
       text-wrap: balance;
     }
 
-    header.hero .hero-tagline strong,
-    .tagline-accent {
+    header.hero .hero-tagline strong {
       color: var(--orange-deep);
       font-weight: 700;
     }
@@ -161,9 +119,15 @@
       border-radius: var(--radius);
       padding: 1rem 1rem 1.1rem;
       margin-bottom: 1rem;
-      box-shadow:
-        0 8px 24px rgb(255 140 0 / 0.1),
-        0 1px 0 rgb(255 215 0 / 0.35) inset;
+      box-shadow: 0 8px 24px rgb(255 140 0 / 0.1), 0 1px 0 rgb(255 215 0 / 0.35) inset;
+    }
+
+    .panel-heading {
+      margin: 0 0 0.75rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-bottom: 2px dashed var(--yellow);
+      padding-bottom: 0.35rem;
     }
 
     label {
@@ -179,6 +143,8 @@
     }
 
     input[type="text"],
+    input[type="email"],
+    input[type="password"],
     textarea,
     select {
       width: 100%;
@@ -190,7 +156,7 @@
       padding: 0.65rem 0.75rem;
     }
 
-    input[type="text"]:focus,
+    input:focus,
     textarea:focus,
     select:focus {
       outline: 2px solid var(--yellow);
@@ -206,6 +172,17 @@
     textarea {
       resize: vertical;
       min-height: 8rem;
+    }
+
+    .auth-hint {
+      margin: 0.35rem 0 0;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .auth-panel .btn-primary {
+      width: 100%;
+      margin-top: 0.95rem;
     }
 
     .row-actions {
@@ -231,12 +208,6 @@
       color: var(--accent-on);
       font-weight: 700;
       box-shadow: 0 4px 14px var(--orange-glow);
-      transition: transform 0.12s ease, box-shadow 0.12s ease;
-    }
-
-    .btn-primary:hover:not(:disabled) {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 18px rgb(255 112 0 / 0.45);
     }
 
     .btn-primary:disabled {
@@ -264,6 +235,40 @@
       font-weight: 600;
     }
 
+    .auth-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem 0.75rem;
+      margin-bottom: 1rem;
+      padding: 0.55rem 0.85rem;
+      border-radius: var(--radius);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-size: 0.875rem;
+      box-shadow: 0 4px 12px rgb(255 140 0 / 0.08);
+    }
+
+    .auth-bar .user-email {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    .auth-bar .user-email strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .auth-bar .btn-logout {
+      min-width: auto;
+      padding: 0.4rem 0.85rem;
+      min-height: 40px;
+      font-size: 0.8125rem;
+    }
+
     .editing-chip {
       display: none;
       font-size: 0.8125rem;
@@ -273,6 +278,7 @@
       border-radius: 999px;
       border: 1px solid var(--yellow);
       font-weight: 600;
+      margin-bottom: 0.5rem;
     }
 
     body.is-editing .editing-chip {
@@ -314,19 +320,10 @@
       color: var(--muted);
     }
 
-    .list-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 0.75rem;
-      margin: 0 0 0.65rem;
-    }
-
     .list-heading h2 {
       margin: 0;
       font-size: 1.125rem;
       font-weight: 700;
-      color: var(--text);
       padding-bottom: 0.15rem;
       border-bottom: 3px dashed var(--yellow);
       display: inline-block;
@@ -353,7 +350,6 @@
       border: 1px solid var(--border);
       background: var(--surface);
       word-break: break-word;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
       box-shadow: 0 4px 12px rgb(255 140 0 / 0.08);
     }
 
@@ -366,7 +362,6 @@
       font-weight: 700;
       font-size: 1rem;
       margin: 0 0 0.35rem;
-      color: var(--text);
     }
 
     .memo-meta {
@@ -379,7 +374,6 @@
     .memo-preview {
       margin: 0 0 0.85rem;
       font-size: 0.895rem;
-      color: var(--text);
       white-space: pre-wrap;
       line-height: 1.45;
     }
@@ -424,558 +418,650 @@
       <div class="hero-title-stack">
         <h1 class="app-title">
           <span class="hero-title-pill">
-            <span class="app-title-spark" aria-hidden="true">✨</span>
+            <span aria-hidden="true">✨</span>
             <span class="app-title-word">ブレインダンプ</span>
           </span>
         </h1>
-        <p class="hero-tagline">気づいたことやアイデアを、<strong>その場でメモ</strong>できる場所です。</p>
+        <p class="hero-tagline" id="hero-tagline">メールアドレスとパスワードで<strong>ログイン</strong>してください。</p>
       </div>
     </header>
 
-    <section class="panel" aria-labelledby="compose-heading">
-      <h2 id="compose-heading" class="sr-only">メモの入力</h2>
+    <!-- 認証 UI（未ログイン時のみ表示） -->
+    <div id="auth-screen">
+      <section class="panel auth-panel" aria-labelledby="login-heading">
+        <h2 id="login-heading" class="panel-heading">ログイン</h2>
+        <label for="login-email">メールアドレス</label>
+        <input id="login-email" type="email" autocomplete="email" />
+        <label for="login-password">パスワード</label>
+        <input id="login-password" type="password" autocomplete="current-password" />
+        <p class="auth-hint">パスワードは6文字以上</p>
+        <button type="button" class="btn-primary" id="btn-login">ログイン</button>
+      </section>
 
-      <span class="editing-chip" aria-live="polite">編集中です（保存すると更新されます）</span>
+      <section class="panel auth-panel" aria-labelledby="register-heading">
+        <h2 id="register-heading" class="panel-heading">新規登録</h2>
+        <label for="register-email">メールアドレス</label>
+        <input id="register-email" type="email" autocomplete="email" />
+        <label for="register-password">パスワード</label>
+        <input id="register-password" type="password" autocomplete="new-password" />
+        <p class="auth-hint">パスワードは6文字以上</p>
+        <button type="button" class="btn-primary" id="btn-register">新規登録</button>
+      </section>
+    </div>
 
-      <label for="memo-title-input">タイトル</label>
-      <input id="memo-title-input" type="text" name="title" autocomplete="off" maxlength="500"
-        placeholder="例：アプリのアイデア" />
-
-      <label for="memo-content-input">本文</label>
-      <textarea id="memo-content-input" name="content" maxlength="8000" placeholder="本文を入力"></textarea>
-
-      <label for="memo-category-select">カテゴリ（任意）</label>
-      <select id="memo-category-select" name="category_id">
-        <option value="">（未選択）</option>
-      </select>
-
-      <div class="row-actions">
-        <button type="button" class="btn-primary" id="btn-save">保存</button>
-        <button type="button" class="btn-ghost hidden" id="btn-cancel-edit" aria-label="編集をやめる">編集をやめる</button>
+    <!-- メモ UI（ログイン後のみ表示） -->
+    <div id="app-main" class="hidden">
+      <div class="auth-bar">
+        <p class="user-email">ログイン中: <strong id="user-email-display">—</strong></p>
+        <button type="button" class="btn-ghost btn-logout" id="btn-logout">ログアウト</button>
       </div>
-    </section>
 
-    <div id="message" role="status" aria-live="polite"></div>
+      <section class="panel" aria-labelledby="compose-heading">
+        <h2 id="compose-heading" class="sr-only">メモの入力</h2>
+        <span class="editing-chip" aria-live="polite">編集中です（保存すると更新されます）</span>
 
-    <section class="panel" aria-labelledby="list-heading-label">
-      <div class="list-heading">
-        <h2 id="list-heading-label">メモ一覧</h2>
-      </div>
-      <p id="list-status"></p>
-      <div class="list-scroll">
-        <ul id="memo-list"></ul>
-      </div>
-    </section>
+        <label for="memo-title-input">タイトル</label>
+        <input id="memo-title-input" type="text" autocomplete="off" />
+
+        <label for="memo-content-input">本文</label>
+        <textarea id="memo-content-input"></textarea>
+
+        <label for="memo-category-select">カテゴリ（任意）</label>
+        <select id="memo-category-select">
+          <option value="">（未選択）</option>
+        </select>
+
+        <div class="row-actions">
+          <button type="button" class="btn-primary" id="btn-save">保存</button>
+          <button type="button" class="btn-ghost hidden" id="btn-cancel-edit">編集をやめる</button>
+        </div>
+      </section>
+
+      <div id="message" role="status" aria-live="polite"></div>
+
+      <section class="panel" aria-labelledby="list-heading-label">
+        <div class="list-heading">
+          <h2 id="list-heading-label">メモ一覧</h2>
+        </div>
+        <p id="list-status"></p>
+        <div class="list-scroll">
+          <ul id="memo-list"></ul>
+        </div>
+      </section>
+    </div>
   </div>
 
-  <!-- Supabase JS: CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
   <script>
-    /* === Supabase 接続情報（このファイルのみで動かす運用です） === */
-    const SUPABASE_URL = "https://viykfsmrckviprbuawbj.supabase.co";
-    const SUPABASE_ANON_KEY =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpeWtmc21yY2t2aXByYnVhd2JqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMzA3NDcsImV4cCI6MjA5MzkwNjc0N30.XMkyetgMes7Guj7EBC4FhAunMjM2kWw4MSCVRgqQNiE";
+    (function () {
+      "use strict";
 
-    var supabaseClient = null;
-    if (typeof supabase !== "undefined" && typeof supabase.createClient === "function") {
-      supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    }
+      var SUPABASE_URL = "https://viykfsmrckviprbuawbj.supabase.co";
+      var SUPABASE_ANON_KEY =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpeWtmc21yY2t2aXByYnVhd2JqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMzA3NDcsImV4cCI6MjA5MzkwNjc0N30.XMkyetgMes7Guj7EBC4FhAunMjM2kWw4MSCVRgqQNiE";
 
-    /** 編集中メモ ID（無ければ新規） */
-    var editingId = null;
-    var msgTimerId = null;
+      var MIN_PASSWORD_LEN = 6;
+      var PREVIEW_CHARS = 200;
+      var TAGLINE_AUTH = "メールアドレスとパスワードで<strong>ログイン</strong>してください。";
+      var TAGLINE_APP = "気づいたことやアイデアを、<strong>その場でメモ</strong>できる場所です。";
 
-    var els = {};
-    /** コンテンツ要約用文字数上限 */
-    var PREVIEW_CHARS = 200;
+      var supabaseClient =
+        typeof supabase !== "undefined" && supabase.createClient
+          ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+          : null;
 
-    function $(id) {
-      return document.getElementById(id);
-    }
+      var editingId = null;
+      var msgTimerId = null;
+      var memoAppReady = false;
 
-    async function init() {
-      els.titleInput = $("memo-title-input");
-      els.contentInput = $("memo-content-input");
-      els.categorySelect = $("memo-category-select");
-      els.saveBtn = $("btn-save");
-      els.cancelBtn = $("btn-cancel-edit");
-      els.message = $("message");
-      els.memoList = $("memo-list");
-      els.listStatus = $("list-status");
-      els.body = document.body;
+      var els = {};
 
-      els.saveBtn.addEventListener("click", onSaveClick);
-      els.cancelBtn.addEventListener("click", cancelEdit);
-      els.memoList.addEventListener("click", onListClick);
-
-      showMessage("", "hide");
-
-      if (location.protocol === "file:") {
-        setListStatus("file:// では Supabase に接続できません。");
-        showMessage(
-          "ローカルファイル（file://）では動きません。GitHub Pages の URL で開くか、プロジェクトフォルダで「npx --yes serve」を実行し、表示された http:// の URL で開いてください。",
-          "error"
-        );
-        els.saveBtn.disabled = true;
-        return;
+      function $(id) {
+        return document.getElementById(id);
       }
 
-      if (!supabaseClient) {
-        setListStatus("Supabase SDK を読み込めませんでした。");
-        showMessage("Supabase のライブラリ読み込みに失敗しました。ネットワークを確認してページを再読み込みしてください。", "error");
-        els.saveBtn.disabled = true;
-        return;
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
       }
 
-      setListStatus("読み込み中…");
-      await loadMemoCategories();
-      await loadMemos();
+      /* --- 表示切替（画面仕様 3.2） --- */
 
-      els.titleInput.focus();
-    }
-
-    /** @param {'success'|'error'|'info'|'hide'} kind */
-    function showMessage(text, kind) {
-      if (msgTimerId) clearTimeout(msgTimerId);
-      if (!els.message) return;
-      if (!text || kind === "hide") {
-        els.message.textContent = "";
-        els.message.removeAttribute("data-kind");
-        return;
+      function setHeroTagline(html) {
+        $("hero-tagline").innerHTML = html;
       }
-      els.message.setAttribute("data-kind", kind === "success" ? "success" : kind === "error" ? "error" : "info");
-      els.message.textContent = text;
-      msgTimerId = setTimeout(function () {
-        if (kind === "success" || kind === "info") {
-          showMessage("", "hide");
+
+      function showAuthView() {
+        $("auth-screen").classList.remove("hidden");
+        $("app-main").classList.add("hidden");
+        setHeroTagline(TAGLINE_AUTH);
+        memoAppReady = false;
+        if (els.message) showMessage("", "hide");
+        if (els.listStatus) els.listStatus.textContent = "";
+        if (els.memoList) els.memoList.innerHTML = "";
+        clearMemoForm();
+        setEditingState(null);
+      }
+
+      function showAppView() {
+        $("auth-screen").classList.add("hidden");
+        $("app-main").classList.remove("hidden");
+        setHeroTagline(TAGLINE_APP);
+      }
+
+      function setUserEmailDisplay(email) {
+        $("user-email-display").textContent = email || "—";
+      }
+
+      /* --- 認証（機能仕様 4.7〜4.10） --- */
+
+      function mapAuthErr(err) {
+        if (!err) return "処理に失敗しました";
+        var msg = err.message || "";
+        var low = msg.toLowerCase();
+        if (low.indexOf("invalid login credentials") !== -1 || low.indexOf("invalid credentials") !== -1) {
+          return "メールアドレスまたはパスワードが正しくありません";
         }
-      }, 8000);
-    }
-
-    /** 一覧エリア直上の短文ステータス（空なら要素を消す見た目） */
-    function setListStatus(html) {
-      els.listStatus.textContent = html || "";
-    }
-
-    function setEditingState(id) {
-      editingId = id || null;
-      if (id) els.body.classList.add("is-editing");
-      else els.body.classList.remove("is-editing");
-
-      els.cancelBtn.classList.toggle("hidden", !id);
-      updateActiveHighlight();
-    }
-
-    function cancelEdit() {
-      setEditingState(null);
-      els.titleInput.value = "";
-      els.contentInput.value = "";
-      els.categorySelect.value = "";
-      els.titleInput.focus();
-      showMessage("", "hide");
-      updateActiveHighlight();
-    }
-
-    /** @returns {string|null} メモへの category_id。未選択は null（DB で NULL とする） */
-    function categoryIdFromForm() {
-      var v = String(els.categorySelect.value || "").trim();
-      return v.length ? v : null;
-    }
-
-    /** memo_categories を select の option で描画する（先頭は未選択）。 */
-    function populateCategorySelectOptions(rows) {
-      var sel = els.categorySelect;
-      var preserved = editingId ? String(sel.value || "") : "";
-
-      sel.innerHTML = "";
-
-      var o0 = document.createElement("option");
-      o0.value = "";
-      o0.textContent = "（未選択）";
-      sel.appendChild(o0);
-
-      if (rows && rows.length) {
-        rows.forEach(function (r) {
-          if (!r || !r.id) return;
-          var o = document.createElement("option");
-          o.value = r.id;
-          o.textContent = r.name != null ? String(r.name) : "";
-          sel.appendChild(o);
-        });
-      }
-
-      setCategorySelectValue(preserved);
-      sel.disabled = false;
-    }
-
-    function setCategorySelectValue(categoryUuid) {
-      var sel = els.categorySelect;
-      var want = categoryUuid ? String(categoryUuid) : "";
-      if (!want) {
-        sel.value = "";
-        return;
-      }
-      var has = Array.prototype.some.call(sel.options, function (o) {
-        return o.value === want;
-      });
-      sel.value = has ? want : "";
-    }
-
-    /** @returns {Promise<void>} */
-    async function loadMemoCategories() {
-      if (!els.categorySelect) return;
-      els.categorySelect.disabled = true;
-      try {
-        var res = await supabaseClient
-          .from("memo_categories")
-          .select("id,name,sort_order")
-          .order("sort_order", { ascending: true })
-          .order("name", { ascending: true });
-
-        if (res.error) throw res.error;
-
-        populateCategorySelectOptions(res.data || []);
-      } catch (e) {
-        console.error(e);
-        populateCategorySelectOptions([]);
-        showMessage("カテゴリの選択肢を読み込めませんでした。「（未選択）」のみで続行できます。", "info");
-      }
-    }
-
-    function readFormTrimmed() {
-      return {
-        title: els.titleInput.value.trim(),
-        content: els.contentInput.value.trim()
-      };
-    }
-
-    /** @returns {{ok:true,t:string,c:string}|{ok:false,msg:string}} */
-    function validateForm(t, c) {
-      if (!t || !c) {
-        return { ok: false, msg: "タイトルと本文を入力してください" };
-      }
-      return { ok: true, t: t, c: c };
-    }
-
-    function truncatePreview(s) {
-      if (!s) return "";
-      if (s.length <= PREVIEW_CHARS) return s;
-      return s.slice(0, PREVIEW_CHARS) + "…";
-    }
-
-    function formatDate(isoString) {
-      try {
-        var d = new Date(isoString);
-        if (isNaN(d.getTime())) return isoString || "";
-        return d.toLocaleString("ja-JP", {
-          dateStyle: "medium",
-          timeStyle: "short"
-        });
-      } catch (_) {
-        return isoString || "";
-      }
-    }
-
-    function escapeHtml(str) {
-      return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
-    }
-
-    /** @param {{id:string,title:string,content:string,created_at:string,category_id?:string|null,memo_categories?:{name?:string}|null}[]} rows */
-    function renderMemoList(rows) {
-      els.memoList.innerHTML = "";
-
-      if (!rows || rows.length === 0) {
-        setListStatus("メモがありません。上のフォームから保存しましょう。");
-        return;
-      }
-
-      setListStatus("");
-
-      rows.forEach(function (row) {
-        var id = escapeHtml(row.id);
-        var catObj = row.memo_categories;
-        var catName = "";
-        if (catObj && typeof catObj === "object") {
-          if (!Array.isArray(catObj)) {
-            catName = catObj.name || "";
-          } else if (catObj.length && catObj[0]) {
-            catName = catObj[0].name || "";
-          }
+        if (low.indexOf("already") !== -1 && low.indexOf("registered") !== -1) {
+          return "このメールアドレスは既に登録されています";
         }
-        var li = document.createElement("li");
-        li.innerHTML =
-          '<article class="memo-card" data-id="' +
-          id +
-          '">' +
-          '<p class="memo-title">' +
-          escapeHtml(row.title || "") +
-          "</p>" +
-          '<p class="memo-meta">カテゴリ：' +
-          escapeHtml(catName ? catName : "―") +
-          "</p>" +
-          '<p class="memo-meta">作成：' +
-          escapeHtml(formatDate(row.created_at)) +
-          "</p>" +
-          '<p class="memo-preview">' +
-          escapeHtml(truncatePreview(row.content || "")) +
-          "</p>" +
-          '<div class="memo-actions">' +
-          '<button type="button" class="btn-outline" data-action="edit">編集</button>' +
-          '<button type="button" class="btn-danger" data-action="delete">削除</button>' +
-          "</div>" +
-          "</article>";
-        els.memoList.appendChild(li);
-      });
-
-      updateActiveHighlight();
-    }
-
-    function isSchemaOrRelationErr(err) {
-      if (!err) return false;
-      var code = err.code ? String(err.code) : "";
-      var m = typeof err.message === "string" ? err.message.toLowerCase() : "";
-      return (
-        code === "PGRST200" ||
-        code === "PGRST205" ||
-        m.includes("could not find a relationship") ||
-        m.includes("could not find the table")
-      );
-    }
-
-    async function loadMemos() {
-      els.saveBtn.disabled = true;
-
-      try {
-        if (!supabaseClient) throw new Error("SDK_NOT_READY");
-
-        var res = await supabaseClient
-          .from("brain_dumps")
-          .select("id,title,content,created_at,category_id,memo_categories(name)")
-          .order("created_at", { ascending: false });
-
-        if (res.error && isSchemaOrRelationErr(res.error)) {
-          res = await supabaseClient
-            .from("brain_dumps")
-            .select("id,title,content,created_at,category_id")
-            .order("created_at", { ascending: false });
+        if (low.indexOf("valid email") !== -1) {
+          return "有効なメールアドレスを入力してください";
         }
+        return msg || "処理に失敗しました";
+      }
 
-        var err = res.error;
-        var data = res.data;
+      function validateAuthInput(email, password) {
+        var e = String(email || "").trim();
+        var p = String(password || "");
+        if (!e) {
+          alert("メールアドレスを入力してください");
+          return null;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) {
+          alert("有効なメールアドレスを入力してください");
+          return null;
+        }
+        if (!p || p.length < MIN_PASSWORD_LEN) {
+          alert("パスワードは6文字以上で入力してください");
+          return null;
+        }
+        return { email: e, password: p };
+      }
 
-        if (err) {
-          console.error(err);
-          renderMemoList([]);
-          setListStatus("一覧を読み込めませんでした。ページを再読み込みするかしばらく待って試してください。");
-          showMessage(mapSupabaseErr(err), "error");
+      async function bootMemoApp() {
+        if (memoAppReady) {
+          await loadMemos();
           return;
         }
-
-        renderMemoList(data || []);
-      } catch (e) {
-        console.error(e);
-        renderMemoList([]);
-        setListStatus("一覧を読み込めませんでした。ページを再読み込みするかしばらく待って試してください。");
-        showMessage("接続に失敗しました。時間をおいて再度お試しください。", "error");
-      } finally {
-        els.saveBtn.disabled = false;
-      }
-    }
-
-    function mapSupabaseErr(err) {
-      if (!err) return "処理に失敗しました";
-      var msg = typeof err.message === "string" ? err.message : "";
-      var low = msg.toLowerCase();
-      var code = err.code ? String(err.code) : "";
-
-      if (low.includes("fetch") || low.includes("network") || low.includes("failed to fetch")) {
-        return (
-          "接続に失敗しました。file:// ではなく http:// または https:// で開いているか、Supabase の URL・anon key が正しいか確認してください。"
-        );
-      }
-      if (code === "PGRST205" || low.includes("could not find the table")) {
-        return "テーブルが見つかりません。Supabase の SQL Editor で sql/create_brain_dumps.sql を実行してください。";
-      }
-      if (code === "PGRST200" || low.includes("could not find a relationship")) {
-        return "カテゴリ連携がありません。sql/create_brain_dumps.sql または sql/20260523_01_ を実行してください。";
-      }
-      if (
-        code === "42501" ||
-        low.includes("permission denied") ||
-        low.includes("row-level security") ||
-        low.includes("rls")
-      ) {
-        return "データベースの権限がありません。Supabase の SQL Editor で sql/enable_anon_access.sql を実行してください。";
-      }
-      if (msg) return msg;
-      return "処理に失敗しました";
-    }
-
-    /** @returns {Promise<void>} */
-    async function onSaveClick() {
-      if (!supabaseClient) {
-        showMessage("Supabase に接続できていません。ページを http:// または https:// で開き直してください。", "error");
-        return;
-      }
-
-      var trimmed = readFormTrimmed();
-      var v = validateForm(trimmed.title, trimmed.content);
-      if (!v.ok) {
-        showMessage(v.msg, "error");
-        return;
-      }
-
-      els.saveBtn.disabled = true;
-
-      try {
-        if (editingId) {
-          var payload = {
-            title: v.t,
-            content: v.c,
-            category_id: categoryIdFromForm()
-          };
-          var up = await supabaseClient.from("brain_dumps").update(payload).eq("id", editingId).select("id");
-
-          if (up.error) {
-            console.error(up.error);
-            showMessage(mapSupabaseErr(up.error), "error");
-          } else {
-            setEditingState(null);
-            els.titleInput.value = "";
-            els.contentInput.value = "";
-            els.categorySelect.value = "";
-            await loadMemos();
-            showMessage("更新しました", "success");
-          }
-        } else {
-          var payloadNew = {
-            title: v.t,
-            content: v.c,
-            category_id: categoryIdFromForm()
-          };
-          var ins = await supabaseClient.from("brain_dumps").insert(payloadNew).select("id");
-
-          if (ins.error) {
-            console.error(ins.error);
-            showMessage(mapSupabaseErr(ins.error), "error");
-          } else {
-            els.titleInput.value = "";
-            els.contentInput.value = "";
-            els.categorySelect.value = "";
-            await loadMemos();
-            showMessage("保存しました", "success");
-          }
-        }
-      } catch (e) {
-        console.error(e);
-        showMessage("接続に失敗しました。時間をおいて再度お試しください。", "error");
-      } finally {
-        els.saveBtn.disabled = false;
-      }
-    }
-
-    /** @param {MouseEvent} ev */
-    function onListClick(ev) {
-      var btn = ev.target.closest("button[data-action]");
-      if (!btn || !ev.currentTarget.contains(btn)) return;
-
-      var card = btn.closest(".memo-card");
-      if (!card) return;
-
-      var id = card.dataset.id;
-
-      var action = btn.getAttribute("data-action");
-      if (action === "edit") void beginEdit(id);
-      if (action === "delete") requestDelete(card, id);
-    }
-
-    /** @returns {Promise<void>} */
-    async function beginEdit(id) {
-      els.titleInput.value = "";
-      els.contentInput.value = "";
-      els.categorySelect.value = "";
-      setEditingState(id);
-
-      els.saveBtn.disabled = true;
-
-      try {
-        await populateFromServer(id);
+        memoAppReady = true;
+        setListStatus("読み込み中…");
+        await loadMemoCategories();
+        await loadMemos();
         els.titleInput.focus();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } catch (err) {
-        console.error(err);
-        setEditingState(null);
+      }
+
+      async function onSessionReady(session) {
+        if (!session || !session.user) {
+          showAuthView();
+          return;
+        }
+        setUserEmailDisplay(session.user.email || "");
+        showAppView();
+        await bootMemoApp();
+      }
+
+      async function onLogin() {
+        var input = validateAuthInput($("login-email").value, $("login-password").value);
+        if (!input) return;
+
+        $("btn-login").disabled = true;
+        try {
+          var res = await supabaseClient.auth.signInWithPassword({
+            email: input.email,
+            password: input.password
+          });
+          if (res.error) {
+            alert(mapAuthErr(res.error));
+            return;
+          }
+          await onSessionReady(res.data.session);
+        } catch (e) {
+          console.error(e);
+          alert("接続に失敗しました。時間をおいて再度お試しください。");
+        } finally {
+          $("btn-login").disabled = false;
+        }
+      }
+
+      async function onRegister() {
+        var input = validateAuthInput($("register-email").value, $("register-password").value);
+        if (!input) return;
+
+        $("btn-register").disabled = true;
+        try {
+          var res = await supabaseClient.auth.signUp({
+            email: input.email,
+            password: input.password
+          });
+          if (res.error) {
+            alert(mapAuthErr(res.error));
+            return;
+          }
+          if (res.data.session) {
+            await onSessionReady(res.data.session);
+            return;
+          }
+          alert(
+            "登録は完了しましたが、ログイン状態を取得できませんでした。Supabase で「Confirm email」を無効にしているか確認し、ログインをお試しください。"
+          );
+        } catch (e) {
+          console.error(e);
+          alert("接続に失敗しました。時間をおいて再度お試しください。");
+        } finally {
+          $("btn-register").disabled = false;
+        }
+      }
+
+      async function onLogout() {
+        $("btn-logout").disabled = true;
+        try {
+          var res = await supabaseClient.auth.signOut();
+          if (res.error) {
+            alert(mapAuthErr(res.error));
+            return;
+          }
+          showAuthView();
+        } catch (e) {
+          console.error(e);
+          alert("ログアウトに失敗しました。時間をおいて再度お試しください。");
+        } finally {
+          $("btn-logout").disabled = false;
+        }
+      }
+
+      /* --- メッセージ表示（機能仕様 4.6） --- */
+
+      function showMessage(text, kind) {
+        if (msgTimerId) clearTimeout(msgTimerId);
+        if (!text || kind === "hide") {
+          els.message.textContent = "";
+          els.message.removeAttribute("data-kind");
+          return;
+        }
+        els.message.setAttribute(
+          "data-kind",
+          kind === "success" ? "success" : kind === "error" ? "error" : "info"
+        );
+        els.message.textContent = text;
+        if (kind === "success" || kind === "info") {
+          msgTimerId = setTimeout(function () {
+            showMessage("", "hide");
+          }, 8000);
+        }
+      }
+
+      function setListStatus(text) {
+        els.listStatus.textContent = text || "";
+      }
+
+      function mapDbErr(err) {
+        if (!err) return "処理に失敗しました";
+        var msg = err.message || "";
+        var low = msg.toLowerCase();
+        if (low.indexOf("fetch") !== -1 || low.indexOf("network") !== -1) {
+          return "接続に失敗しました。時間をおいて再度お試しください";
+        }
+        return msg || "処理に失敗しました";
+      }
+
+      /* --- 編集状態 --- */
+
+      function setEditingState(id) {
+        editingId = id || null;
+        document.body.classList.toggle("is-editing", !!id);
+        els.cancelBtn.classList.toggle("hidden", !id);
+        updateActiveHighlight();
+      }
+
+      function clearMemoForm() {
+        if (!els.titleInput) return;
         els.titleInput.value = "";
         els.contentInput.value = "";
         els.categorySelect.value = "";
-        showMessage(mapSupabaseErr(err), "error");
-      } finally {
-        els.saveBtn.disabled = false;
       }
-    }
 
-    async function populateFromServer(id) {
-      var sel = await supabaseClient
-        .from("brain_dumps")
-        .select("id,title,content,category_id")
-        .eq("id", id)
-        .maybeSingle();
+      function cancelEdit() {
+        setEditingState(null);
+        clearMemoForm();
+        showMessage("", "hide");
+      }
 
-      if (sel.error) throw sel.error;
-      if (!sel.data) throw new Error("メモが見つかりません");
+      function categoryIdFromForm() {
+        var v = String(els.categorySelect.value || "").trim();
+        return v ? v : null;
+      }
 
-      els.titleInput.value = sel.data.title || "";
-      els.contentInput.value = sel.data.content || "";
-      setCategorySelectValue(sel.data.category_id || "");
+      /* --- カテゴリ選択肢読込（機能仕様 4.1） --- */
 
-      updateActiveHighlight();
-    }
+      function populateCategorySelect(rows) {
+        var preserved = editingId ? els.categorySelect.value : "";
+        els.categorySelect.innerHTML = "";
+        var opt0 = document.createElement("option");
+        opt0.value = "";
+        opt0.textContent = "（未選択）";
+        els.categorySelect.appendChild(opt0);
 
-    function updateActiveHighlight() {
-      nodesList().forEach(function (node) {
-        var match = !!editingId && node.dataset.id === editingId;
-        node.classList.toggle("is-active", match);
-      });
-    }
+        (rows || []).forEach(function (r) {
+          if (!r || !r.id) return;
+          var opt = document.createElement("option");
+          opt.value = r.id;
+          opt.textContent = r.name != null ? String(r.name) : "";
+          els.categorySelect.appendChild(opt);
+        });
 
-    function nodesList() {
-      return Array.prototype.slice.call(els.memoList.querySelectorAll(".memo-card"));
-    }
+        setCategorySelectValue(preserved);
+        els.categorySelect.disabled = false;
+      }
 
-    /** @returns {Promise<void>} */
-    async function requestDelete(_card, id) {
-      var confirmed = confirm("このメモを削除しますか？");
-      if (!confirmed) return;
+      function setCategorySelectValue(categoryUuid) {
+        var want = categoryUuid ? String(categoryUuid) : "";
+        if (!want) {
+          els.categorySelect.value = "";
+          return;
+        }
+        var found = false;
+        for (var i = 0; i < els.categorySelect.options.length; i++) {
+          if (els.categorySelect.options[i].value === want) found = true;
+        }
+        els.categorySelect.value = found ? want : "";
+      }
 
-      els.saveBtn.disabled = true;
-      try {
-        var del = await supabaseClient.from("brain_dumps").delete().eq("id", id);
+      async function loadMemoCategories() {
+        els.categorySelect.disabled = true;
+        try {
+          var res = await supabaseClient
+            .from("memo_categories")
+            .select("id,name,sort_order")
+            .order("sort_order", { ascending: true })
+            .order("name", { ascending: true });
 
-        if (del.error) {
-          console.error(del.error);
-          showMessage(mapSupabaseErr(del.error), "error");
+          if (res.error) throw res.error;
+          populateCategorySelect(res.data);
+        } catch (e) {
+          console.error(e);
+          populateCategorySelect([]);
+          showMessage("カテゴリの選択肢を読み込めませんでした。「（未選択）」のみで続行できます。", "info");
+        }
+      }
+
+      /* --- メモ一覧（機能仕様 4.3） --- */
+
+      function truncatePreview(s) {
+        if (!s) return "";
+        if (s.length <= PREVIEW_CHARS) return s;
+        return s.slice(0, PREVIEW_CHARS) + "…";
+      }
+
+      function formatDate(iso) {
+        try {
+          var d = new Date(iso);
+          if (isNaN(d.getTime())) return iso || "";
+          return d.toLocaleString("ja-JP", { dateStyle: "medium", timeStyle: "short" });
+        } catch (_) {
+          return iso || "";
+        }
+      }
+
+      function categoryNameFromRow(row) {
+        var c = row.memo_categories;
+        if (!c) return "";
+        if (Array.isArray(c)) return c[0] && c[0].name ? c[0].name : "";
+        return c.name || "";
+      }
+
+      function renderMemoList(rows) {
+        els.memoList.innerHTML = "";
+        if (!rows || !rows.length) {
+          setListStatus("メモがありません。上のフォームから保存しましょう。");
+          return;
+        }
+        setListStatus("");
+        rows.forEach(function (row) {
+          var id = escapeHtml(row.id);
+          var catName = categoryNameFromRow(row);
+          var li = document.createElement("li");
+          li.innerHTML =
+            '<article class="memo-card" data-id="' + id + '">' +
+            '<p class="memo-title">' + escapeHtml(row.title || "") + "</p>" +
+            '<p class="memo-meta">カテゴリ：' + escapeHtml(catName || "―") + "</p>" +
+            '<p class="memo-meta">作成：' + escapeHtml(formatDate(row.created_at)) + "</p>" +
+            '<p class="memo-preview">' + escapeHtml(truncatePreview(row.content || "")) + "</p>" +
+            '<div class="memo-actions">' +
+            '<button type="button" class="btn-outline" data-action="edit">編集</button>' +
+            '<button type="button" class="btn-danger" data-action="delete">削除</button>' +
+            "</div></article>";
+          els.memoList.appendChild(li);
+        });
+        updateActiveHighlight();
+      }
+
+      async function loadMemos() {
+        els.saveBtn.disabled = true;
+        try {
+          var userRes = await supabaseClient.auth.getUser();
+          var user = userRes.data.user;
+          var res = await supabaseClient
+            .from("brain_dumps")
+            .select("id,title,content,created_at,category_id,memo_categories(name)")
+            .eq("user_id", user.id)
+            .order("created_at", { ascending: false });
+
+          if (res.error) {
+            console.error(res.error);
+            renderMemoList([]);
+            setListStatus("一覧を読み込めませんでした。ページを再読み込みするかしばらく待って試してください。");
+            showMessage(mapDbErr(res.error), "error");
+            return;
+          }
+          renderMemoList(res.data || []);
+        } catch (e) {
+          console.error(e);
+          renderMemoList([]);
+          setListStatus("一覧を読み込めませんでした。ページを再読み込みするかしばらく待って試してください。");
+          showMessage("接続に失敗しました。時間をおいて再度お試しください。", "error");
+        } finally {
+          els.saveBtn.disabled = false;
+        }
+      }
+
+      /* --- 保存・更新（機能仕様 4.2 / 4.4） --- */
+
+      function validateMemoForm(title, content) {
+        if (!title || !content) {
+          return { ok: false, msg: "タイトルと本文を入力してください" };
+        }
+        return { ok: true, title: title, content: content };
+      }
+
+      async function onSaveClick() {
+        var trimmed = {
+          title: els.titleInput.value.trim(),
+          content: els.contentInput.value.trim()
+        };
+        var v = validateMemoForm(trimmed.title, trimmed.content);
+        if (!v.ok) {
+          showMessage(v.msg, "error");
           return;
         }
 
-        if (editingId === id) cancelEdit();
+        els.saveBtn.disabled = true;
+        var payload = {
+          title: v.title,
+          content: v.content,
+          category_id: categoryIdFromForm()
+        };
 
-        await loadMemos();
-        showMessage("削除しました", "success");
-      } catch (e) {
-        console.error(e);
-        showMessage("接続に失敗しました。時間をおいて再度お試しください。", "error");
-      } finally {
-        els.saveBtn.disabled = false;
+        try {
+          if (editingId) {
+            var up = await supabaseClient
+              .from("brain_dumps")
+              .update(payload)
+              .eq("id", editingId);
+
+            if (up.error) {
+              showMessage(mapDbErr(up.error), "error");
+              return;
+            }
+            setEditingState(null);
+            clearMemoForm();
+            await loadMemos();
+            showMessage("更新しました", "success");
+          } else {
+            var userRes = await supabaseClient.auth.getUser();
+            var user = userRes.data.user;
+            payload.user_id = user.id;
+            var ins = await supabaseClient.from("brain_dumps").insert(payload);
+            if (ins.error) {
+              showMessage(mapDbErr(ins.error), "error");
+              return;
+            }
+            clearMemoForm();
+            await loadMemos();
+            showMessage("保存しました", "success");
+          }
+        } catch (e) {
+          console.error(e);
+          showMessage("接続に失敗しました。時間をおいて再度お試しください。", "error");
+        } finally {
+          els.saveBtn.disabled = false;
+        }
       }
-    }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      void init();
-    });
+      /* --- 編集（機能仕様 4.4） --- */
+
+      async function beginEdit(id) {
+        clearMemoForm();
+        setEditingState(id);
+        els.saveBtn.disabled = true;
+        try {
+          var res = await supabaseClient
+            .from("brain_dumps")
+            .select("id,title,content,category_id")
+            .eq("id", id)
+            .maybeSingle();
+
+          if (res.error) throw res.error;
+          if (!res.data) throw new Error("メモが見つかりません");
+
+          els.titleInput.value = res.data.title || "";
+          els.contentInput.value = res.data.content || "";
+          setCategorySelectValue(res.data.category_id || "");
+          els.titleInput.focus();
+          updateActiveHighlight();
+        } catch (e) {
+          console.error(e);
+          setEditingState(null);
+          clearMemoForm();
+          showMessage(mapDbErr(e), "error");
+        } finally {
+          els.saveBtn.disabled = false;
+        }
+      }
+
+      function updateActiveHighlight() {
+        var cards = els.memoList.querySelectorAll(".memo-card");
+        for (var i = 0; i < cards.length; i++) {
+          var card = cards[i];
+          card.classList.toggle("is-active", !!editingId && card.dataset.id === editingId);
+        }
+      }
+
+      /* --- 削除（機能仕様 4.5） --- */
+
+      async function requestDelete(id) {
+        if (!confirm("このメモを削除しますか？")) return;
+
+        els.saveBtn.disabled = true;
+        try {
+          var del = await supabaseClient.from("brain_dumps").delete().eq("id", id);
+          if (del.error) {
+            showMessage(mapDbErr(del.error), "error");
+            return;
+          }
+          if (editingId === id) cancelEdit();
+          await loadMemos();
+          showMessage("削除しました", "success");
+        } catch (e) {
+          console.error(e);
+          showMessage("接続に失敗しました。時間をおいて再度お試しください。", "error");
+        } finally {
+          els.saveBtn.disabled = false;
+        }
+      }
+
+      function onListClick(ev) {
+        var btn = ev.target.closest("button[data-action]");
+        if (!btn) return;
+        var card = btn.closest(".memo-card");
+        if (!card) return;
+        var id = card.dataset.id;
+        var action = btn.getAttribute("data-action");
+        if (action === "edit") void beginEdit(id);
+        if (action === "delete") void requestDelete(id);
+      }
+
+      /* --- 初期化 --- */
+
+      async function init() {
+        els.titleInput = $("memo-title-input");
+        els.contentInput = $("memo-content-input");
+        els.categorySelect = $("memo-category-select");
+        els.saveBtn = $("btn-save");
+        els.cancelBtn = $("btn-cancel-edit");
+        els.message = $("message");
+        els.memoList = $("memo-list");
+        els.listStatus = $("list-status");
+
+        $("btn-login").addEventListener("click", function () {
+          void onLogin();
+        });
+        $("btn-register").addEventListener("click", function () {
+          void onRegister();
+        });
+        $("btn-logout").addEventListener("click", function () {
+          void onLogout();
+        });
+        els.saveBtn.addEventListener("click", function () {
+          void onSaveClick();
+        });
+        els.cancelBtn.addEventListener("click", cancelEdit);
+        els.memoList.addEventListener("click", onListClick);
+
+        if (!supabaseClient) {
+          alert("Supabase のライブラリを読み込めませんでした。");
+          return;
+        }
+
+        supabaseClient.auth.onAuthStateChange(function (event) {
+          if (event === "SIGNED_OUT") showAuthView();
+        });
+
+        var sessionRes = await supabaseClient.auth.getSession();
+        if (sessionRes.data && sessionRes.data.session) {
+          await onSessionReady(sessionRes.data.session);
+        } else {
+          showAuthView();
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        void init();
+      });
+    })();
   </script>
 </body>
 
