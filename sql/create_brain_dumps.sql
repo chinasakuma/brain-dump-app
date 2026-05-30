@@ -37,3 +37,11 @@ insert into public.memo_categories (name, sort_order) values
   ('雑記', 40),
   ('その他', 50)
 on conflict on constraint memo_categories_name_key do nothing;
+
+-- ブラウザ（anon）からアクセスできるようにする
+alter table public.memo_categories disable row level security;
+alter table public.brain_dumps disable row level security;
+
+grant usage on schema public to anon, authenticated;
+grant select, insert, update, delete on table public.brain_dumps to anon, authenticated;
+grant select, insert, update, delete on table public.memo_categories to anon, authenticated;
